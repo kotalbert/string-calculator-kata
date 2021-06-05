@@ -17,7 +17,7 @@ class StringCalculator:
 
     @staticmethod
     def _sum_vals(vals: List[int]) -> int:
-        return sum(vals)
+        return sum(filter(lambda x: x <= 1000, vals))
 
     @staticmethod
     def _split_str(s: str) -> List[str]:

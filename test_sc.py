@@ -38,7 +38,9 @@ class TestStringCalculator:
         except ValueError as e:
             assert str(e) == expected_err_msg
 
-    @pytest.mark.parametrize('test_input, expected', [('999,1000', 1990), ('1,999,1000,1001', 2000)])
+    @pytest.mark.parametrize('test_input, expected', [('999,1000', 1999),
+                                                      ('1,999,1000,1001', 2000),
+                                                      ('1001', 0)])
     def test_gt_1000_ignored(self, test_input, expected, sc):
         assert sc.add(test_input) == expected
 
