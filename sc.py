@@ -1,4 +1,5 @@
 class StringCalculator:
-    def add(self, s: str) -> int:
+    @staticmethod
+    def add(s: str) -> int:
         if s == '':
             return 0
