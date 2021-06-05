@@ -23,6 +23,9 @@ class TestStringCalculator:
         """Newline separated values should be added."""
         assert sc.add(test_input) == expected
 
+    def test_either_separated_values(self, sc):
+        assert sc.add('1\n2,3\n4') == 10
+
 
 @pytest.fixture()
 def sc():
