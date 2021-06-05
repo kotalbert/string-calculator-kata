@@ -26,6 +26,18 @@ class TestStringCalculator:
     def test_either_separated_values(self, sc):
         assert sc.add('1\n2,3\n4') == 10
 
+    @pytest.mark.parametrize('test_input, expected', [('-1,2,-3', '-1,-3'), ('-1,2', '-1'), ('1,-2', '-2')])
+    def test_negative_values_not_allowed(self, test_input, expected, sc):
+        """Negatives in input should raise exception"""
+        expected_err_msg = f'negatives_not_allowed {expected}'
+        with pytest.raises(ValueError):
+            sc.add(test_input)
+
+        try:
+            sc.add(test_input)
+        except ValueError as e:
+            assert str(e) == expected_err_msg
+
 
 @pytest.fixture()
 def sc():
