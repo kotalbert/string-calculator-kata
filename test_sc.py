@@ -29,7 +29,7 @@ class TestStringCalculator:
     @pytest.mark.parametrize('test_input, expected', [('-1,2,-3', '-1,-3'), ('-1,2', '-1'), ('1,-2', '-2')])
     def test_negative_values_not_allowed(self, test_input, expected, sc):
         """Negatives in input should raise exception"""
-        expected_err_msg = f'negatives_not_allowed {expected}'
+        expected_err_msg = f'negatives not allowed {expected}'
         with pytest.raises(ValueError):
             sc.add(test_input)
 
