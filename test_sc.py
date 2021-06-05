@@ -4,7 +4,7 @@ from sc import StringCalculator
 
 class TestSringCalculator:
 
-    def test_empty(self):
+    def test_empty(self, sc):
         assert sc.add('') == 0
 
 
