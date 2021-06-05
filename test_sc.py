@@ -18,6 +18,11 @@ class TestStringCalculator:
         """Coma separated numbers should be added."""
         assert sc.add(test_input) == expected
 
+    @pytest.mark.parametrize('test_input, expected', [('1\n2', 3), ('10\n20', 30)])
+    def test_nl_separated_values(self, test_input, expected, sc):
+        """Newline separated values should be added."""
+        assert sc.add(test_input) == expected
+
 
 @pytest.fixture()
 def sc():
