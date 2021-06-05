@@ -1,9 +1,15 @@
+from typing import Union, List
+
+
 class StringCalculator:
-    def add(self, s: str) -> int:
-        if s == '':
+    def add(self, input_str: str) -> int:
+        if input_str == '':
             return 0
-        return self._string_to_number(s)
+        s = 0
+        for number_str in input_str.split(','):
+            s += self._string_to_number(number_str)
+        return s
 
     @staticmethod
-    def _string_to_number(number: str):
-        return int(number)
+    def _string_to_number(value: str) -> int:
+        return int(value)
