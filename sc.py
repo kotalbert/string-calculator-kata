@@ -1,5 +1,5 @@
 import re
-from typing import Union, List
+from typing import Union, List, Tuple
 
 
 class StringCalculator:
@@ -21,7 +21,8 @@ class StringCalculator:
 
     @staticmethod
     def _split_str(s: str) -> List[str]:
-        return re.split(r'[\n,]', s)
+        separator, s_rest = StringCalculator.find_separator(s)
+        return re.split(separator, s_rest)
 
     @staticmethod
     def _convert_vals_to_ints(vals: List[str]) -> List[int]:
@@ -33,3 +34,11 @@ class StringCalculator:
         if len(negs) > 0:
             negs_str = map(str, negs)
             raise ValueError('negatives not allowed ' + ','.join(negs_str))
+
+    @staticmethod
+    def find_separator(s: str) -> Tuple[str, str]:
+        match = re.search(r'^//(.*)\n(.*)', s)
+        default_separator = r'[\n,]'
+        if match:
+            return match.group(1), match.group(2)
+        return default_separator, s
